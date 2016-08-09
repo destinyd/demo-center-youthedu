@@ -57,7 +57,13 @@ module.exports = YouthLiveIndexPage = React.createClass
       columns={columns} 
       dataSource={dataSource} 
       bordered
-      title={=>
-        <div><Button type='primary' icon='plus'>创建直播活动</Button></div>
-      }
+      title={@render_title}
     />
+
+  render_title: ->
+    <div>
+      <Button type='primary' icon='plus' onClick={@open_new}>创建直播活动</Button>
+    </div>
+
+  open_new: ->
+    Turbolinks.visit('/youth/live/new')

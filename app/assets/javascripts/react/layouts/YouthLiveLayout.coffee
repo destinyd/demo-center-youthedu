@@ -61,21 +61,25 @@ Aside = React.createClass
         theme='dark' 
         defaultOpenKeys={['sub-live']}
         defaultSelectedKeys={[@state.selected_key]}
-        onClick={@open}
       >
         <SubMenu key='sub-live' title={<span><Icon type="video-camera" /> 直播</span>}>
-          <Menu.Item key='live' path='/youth/live'>
-            <Icon type='laptop' /><span className='nav-text'>直播活动列表</span>
+          <Menu.Item key='live'>
+            <a href='/youth/live' onClick={(evt)-> evt.stopPropagation()}>
+              <Icon type='bars' /><span className='nav-text'>直播活动列表</span>
+            </a>
           </Menu.Item>
-          <Menu.Item key='live-room' path='/youth/live/room'>
-            <Icon type='laptop' /><span className='nav-text'>直播间预览</span>
+          <Menu.Item key='new-live-room'>
+            <a href='/youth/live/new' onClick={(evt)-> evt.stopPropagation()}>
+              <Icon type='plus' /><span className='nav-text'>创建直播活动</span>
+            </a>
+          </Menu.Item>
+          <Menu.Item key='live-room'>
+            <a href='/youth/live/room' onClick={(evt)-> evt.stopPropagation()}>
+              <Icon type='video-camera' /><span className='nav-text'>直播间预览</span>
+            </a>
           </Menu.Item>
         </SubMenu>
       </Menu>
 
       {aside_action}
     </aside>
-
-  open: ({ key, item, keyPath })->
-    path = item.props.path
-    Turbolinks.visit path

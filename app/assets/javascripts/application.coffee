@@ -41,3 +41,4 @@ window.ChatBox = require 'react/mobile/learning-center/chatbox/ChatBox'
 
 # youth live
 window.YouthLiveIndexPage = require 'react/youth/live/YouthLiveIndexPage'
+window.YouthLiveNew = require 'react/youth/live/YouthLiveNew'

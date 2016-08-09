@@ -10,4 +10,9 @@ class Youth::LiveController < ApplicationController
     @component_name = 'YouthLiveRoomPreview'
     @menukey = 'live-room'
   end
+
+  def new
+    @component_name = 'YouthLiveNew'
+    @menukey = 'new-live-room'
+  end
 end
