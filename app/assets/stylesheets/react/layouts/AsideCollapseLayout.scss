@@ -11,7 +11,15 @@ $sider-bgc: #252C36;
     > .ant-menu {
       background-color: transparent;
 
-      > .ant-menu-item {
+      > .ant-menu-submenu {
+        background-color: transparent;
+
+        > .ant-menu-sub {
+          background-color: transparent;
+        }
+      }
+
+      > .ant-menu-item, > .ant-menu-submenu > .ant-menu-sub > .ant-menu-item {
         margin: 0;
         color: rgba(white, 0.7);
         font-size: 13px;
@@ -31,7 +39,7 @@ $sider-bgc: #252C36;
         }
       }
 
-      > .ant-menu-item-selected {
+      > .ant-menu-item-selected, > .ant-menu-submenu > .ant-menu-sub > .ant-menu-item-selected {
         color: white;
         position: relative;
         &:after {

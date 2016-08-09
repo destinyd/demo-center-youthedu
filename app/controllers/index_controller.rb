@@ -1,5 +1,5 @@
 class IndexController < ApplicationController
   def index
-    redirect_to '/slides/learning-center'
+    redirect_to '/youth/live'
   end
 end

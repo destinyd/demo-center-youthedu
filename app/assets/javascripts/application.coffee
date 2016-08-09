@@ -5,6 +5,7 @@ window.ClassName = require 'utils/ClassName'
 window.YieldComponent = require 'react/layouts/YieldComponent'
 window.AsideCollapseLayout = require 'react/layouts/AsideCollapseLayout'
 window.SimulateMobileLayout = require 'react/layouts/SimulateMobileLayout'
+window.YouthLiveLayout = require 'react/layouts/YouthLiveLayout'
 
 # components
 window.SlideShow = require 'react/slides/SlideShow'
@@ -37,3 +38,6 @@ window.MobileLearningSubjectsTargetSolve = require 'react/mobile/learning-center
 window.MobileLearningTodo = require 'react/mobile/learning-center/MobileLearningTodo'
 
 window.ChatBox = require 'react/mobile/learning-center/chatbox/ChatBox'
+
+# youth live
+window.YouthLiveIndexPage = require 'react/youth/live/YouthLiveIndexPage'
