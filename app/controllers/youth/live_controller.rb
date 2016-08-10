@@ -15,4 +15,5 @@ class Youth::LiveController < ApplicationController
     @component_name = 'YouthLiveNew'
     @menukey = 'new-live-room'
   end
+
 end

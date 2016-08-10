@@ -6,4 +6,8 @@ Rails.application.routes.draw do
     get '/live/room', to: 'live#room'
     get '/live/new', to: 'live#new'
   end
+  
+  resources :live_items do
+    get "create_live", on: :collection
+  end
 end

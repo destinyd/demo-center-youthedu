@@ -159,6 +159,11 @@ class LetvLiveRoom
   end
 end
 
+# 初始化设置类变量
+LetvLiveRoom.set_userid("823474")
+LetvLiveRoom.set_secretkey("f9e35f28944743e38ceccf9ab00364ab")
+LetvLiveRoom.set_uu("xrtjxlf2et")
+
 
 
 
