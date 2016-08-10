@@ -8,12 +8,17 @@ Rails.application.routes.draw do
     get '/live/records', to: 'live#records'
 
 
-    get '/consultant/learners',       to: 'live#nothing'
-    get '/consultant/learners/edit',  to: 'live#nothing'
-    get '/manager/learners',          to: 'live#nothing'
-    get '/manager/learners/edit',     to: 'live#nothing'
-    get '/learner/courses',           to: 'live#nothing'
-    get '/learner/info',              to: 'live#nothing'
-    get '/teacher/schedule',          to: 'live#nothing'
+    get '/consultant/learners',       to: 'live#consultant_learners'
+    get '/consultant/learners/edit',  to: 'live#consultant_edit_learner'
+
+    get '/manager/learners',            to: 'live#manager_learners'
+    get '/manager/learners/edit',       to: 'live#manager_edit_learner'
+    get '/manager/initial_assessment',  to: 'live#nothing'
+    get '/manager/schedule',            to: 'live#manager_schedule'
+
+    get '/learner/courses',             to: 'live#learner_courses'
+    get '/learner/info',                to: 'live#learner_info'
+
+    get '/teacher/courses',             to: 'live#teacher_courses'
   end
 end

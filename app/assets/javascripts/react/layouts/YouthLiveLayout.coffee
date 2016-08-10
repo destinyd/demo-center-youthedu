@@ -115,6 +115,8 @@ menudata = [
     menus: [
       {href: '/youth/manager/learners',      icon: 'team', name: '学员列表'}
       {href: '/youth/manager/learners/edit', icon: 'edit', name: '编辑学员'}
+      {href: '/youth/manager/initial_assessment',      icon: 'check', name: '初始评估'}
+      {href: '/youth/manager/schedule',      icon: 'bars', name: '排课'}
     ]
   }
   {
@@ -131,7 +133,7 @@ menudata = [
     subicon: 'solution'
     subname: '教师'
     menus: [
-      {href: '/youth/teacher/schedule', icon: 'calendar', name: '课程安排'}
+      {href: '/youth/teacher/courses', icon: 'calendar', name: '课程安排'}
     ]
   }
 ]

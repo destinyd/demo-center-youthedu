@@ -44,7 +44,21 @@ window.YouthLiveLayout = require 'react/layouts/YouthLiveLayout'
 # window.ChatBox = require 'react/mobile/learning-center/chatbox/ChatBox'
 
 # youth live
+window.YouthCommon = {
+  LearnersTable: require 'react/youth/common/LearnersTable'
+}
+
 window.YouthLiveIndexPage = require 'react/youth/live/YouthLiveIndexPage'
 window.YouthLiveNew = require 'react/youth/live/YouthLiveNew'
 window.YouthLiveRoomPreview = require 'react/youth/live/YouthLiveRoomPreview'
 window.YouthLiveRecords = require 'react/youth/live/YouthLiveRecords'
+
+window.ConsultantLearners = require 'react/youth/consultant/ConsultantLearners'
+window.ConsultantEditLearner = require 'react/youth/consultant/ConsultantEditLearner'
+
+window.ManagerSchedule = require 'react/youth/learner/LearnerCourses'
+
+window.LearnerCourses = require 'react/youth/learner/LearnerCourses'
+window.LearnerInfo = require 'react/youth/learner/LearnerInfo'
+
+window.TeacherCourses = require 'react/youth/learner/LearnerCourses'
