@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.org'
+source "https://rubygems.org"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -78,3 +78,7 @@ gem "mina", "0.3.7"
 gem 'mina_util',
   github: "mindpin/mina_util",
   ref: "25f36fd"
+
+
+gem 'mongoid', "6.0.0.beta"
+
