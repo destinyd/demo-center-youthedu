@@ -1,11 +1,11 @@
-{ Table, Button } = antd
+{ Table, Button, Popconfirm } = antd
 
 module.exports = YouthLiveIndexPage = React.createClass
   render: ->
     dataSource = [
       {
         key: '1'
-        name: '直播活动一'
+        name: '演示直播间一'
         start: new Date('2016-08-09 12:40')
         end: new Date('2016-08-09 14:40')
         active: true
@@ -13,7 +13,7 @@ module.exports = YouthLiveIndexPage = React.createClass
       }
       {
         key: '2'
-        name: '直播活动二'
+        name: '演示直播间二'
         start: new Date('2016-07-09 12:40')
         end: new Date('2016-07-09 14:40')
         active: false
@@ -21,7 +21,7 @@ module.exports = YouthLiveIndexPage = React.createClass
       }
       {
         key: '3'
-        name: '直播活动三'
+        name: '演示直播间三'
         start: new Date('2016-07-09 12:40')
         end: new Date('2016-07-09 14:40')
         active: false
@@ -71,6 +71,10 @@ module.exports = YouthLiveIndexPage = React.createClass
           if item.active
             <div>
               <a href='/youth/live/room'>预览</a>
+              <span className='ant-divider' />
+              <Popconfirm title="确定要提前结束直播吗？">
+                <a href='javascript:;'>提前结束</a>
+              </Popconfirm>
             </div>
           else
             <div />
@@ -80,13 +84,12 @@ module.exports = YouthLiveIndexPage = React.createClass
     <Table 
       columns={columns} 
       dataSource={dataSource} 
-      bordered
       title={@render_title}
     />
 
   render_title: ->
     <div>
-      <Button type='primary' icon='plus' onClick={@open_new}>创建直播活动</Button>
+      <Button type='primary' icon='plus' onClick={@open_new}>创建直播间</Button>
     </div>
 
   open_new: ->
