@@ -65,12 +65,12 @@ Aside = React.createClass
         <SubMenu key='sub-live' title={<span><Icon type="video-camera" /> 直播</span>}>
           <Menu.Item key='live'>
             <a href='/youth/live' onClick={(evt)-> evt.stopPropagation()}>
-              <Icon type='bars' /><span className='nav-text'>直播活动列表</span>
+              <Icon type='bars' /><span className='nav-text'>直播间列表</span>
             </a>
           </Menu.Item>
           <Menu.Item key='new-live-room'>
             <a href='/youth/live/new' onClick={(evt)-> evt.stopPropagation()}>
-              <Icon type='plus' /><span className='nav-text'>创建直播活动</span>
+              <Icon type='plus' /><span className='nav-text'>创建直播间</span>
             </a>
           </Menu.Item>
           <Menu.Item key='live-room'>

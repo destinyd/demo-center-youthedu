@@ -1,0 +1,44 @@
+body {
+  font-size: 14px;
+
+  label {
+    font-size: 14px;
+  }
+}
+
+.ant-btn {
+  font-size: 14px;
+  border-radius: 100px;
+
+  &.ant-btn-sm {
+    font-size: 12px;
+    padding: 1px 12px;
+  }
+}
+
+.ant-table {
+  font-size: 14px;
+}
+
+.ant-breadcrumb {
+  font-size: 14px;
+}
+
+.ant-menu {
+  .ant-menu-item {
+    font-size: 14px;
+  }
+
+  .ant-menu-submenu .ant-menu-submenu-title {
+    font-size: 14px;
+  }
+}
+
+.ant-popover {
+  .ant-popover-buttons {
+    overflow: hidden;
+    .ant-btn {
+      float: right;
+    }
+  }
+}

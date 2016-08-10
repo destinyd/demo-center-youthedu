@@ -21,7 +21,7 @@ YouthLiveNew = React.createClass
     default_time = [new Date, null]
 
     <div>
-      <h2 style={marginBottom: '3rem'}>创建直播活动</h2>
+      <h2 style={marginBottom: '3rem'}>创建直播间</h2>
 
       <div style={maxWidth: 600}>
         <Form onSubmit={@handle_submit}>
