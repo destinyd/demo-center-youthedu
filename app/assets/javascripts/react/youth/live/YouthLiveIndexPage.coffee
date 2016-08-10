@@ -77,7 +77,9 @@ module.exports = YouthLiveIndexPage = React.createClass
               </Popconfirm>
             </div>
           else
-            <div />
+            <div>
+              <a href='/youth/live/records'>录像回放</a>
+            </div>
       }
     ]
 

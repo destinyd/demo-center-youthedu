@@ -38,6 +38,18 @@ $sider-bgc: #252C36;
         }
       }
 
+      > .ant-menu-submenu > .ant-menu-submenu-title {
+        border-bottom: solid 1px rgba(black, 0.2);
+        border-top: solid 1px rgba(white, 0.06);
+        height: 50px; line-height: 48px;
+      }
+      > .ant-menu-submenu:last-child {
+        border-bottom: solid 1px rgba(white, 0.06);
+      }
+      > .ant-menu-submenu > .ant-menu-sub {
+        background-color: rgba(black, 0.2);
+      }
+
       > .ant-menu-item-selected, > .ant-menu-submenu > .ant-menu-sub > .ant-menu-item-selected {
         color: white;
         position: relative;

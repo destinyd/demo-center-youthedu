@@ -3,17 +3,22 @@ class Youth::LiveController < ApplicationController
 
   def index
     @component_name = 'YouthLiveIndexPage'
-    @menukey = 'live'
   end
 
   def room
     @component_name = 'YouthLiveRoomPreview'
-    @menukey = 'live-room'
   end
 
   def new
     @component_name = 'YouthLiveNew'
-    @menukey = 'new-live-room'
+  end
+
+  def records
+    @component_name = 'YouthLiveRecords'
+  end
+
+  def nothing
+    @component_name = 'Nothing'
   end
 
 end

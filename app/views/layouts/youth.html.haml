@@ -13,6 +13,8 @@
     = javascript_include_tag 'libs', :'data-turbolinks-track' => true
     = javascript_include_tag 'application', :'data-turbolinks-track' => true
 
+    = javascript_include_tag 'http://yuntv.letv.com/player/live/blive.js', :'data-turbolinks-track' => true
+
     = csrf_meta_tags
 
   %body
@@ -22,4 +24,6 @@
         data: @component_data || {}
       }
 
-    = react_component 'YouthLiveLayout', content_component: content_component, menukey: @menukey
+      menukey = @menukey || request.path
+
+    = react_component 'YouthLiveLayout', content_component: content_component, menukey: menukey

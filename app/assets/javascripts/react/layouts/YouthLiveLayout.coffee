@@ -59,27 +59,79 @@ Aside = React.createClass
       <Menu 
         mode='inline' 
         theme='dark' 
-        defaultOpenKeys={['sub-live']}
+        defaultOpenKeys={menudata.map (x)-> x.subkey}
         defaultSelectedKeys={[@state.selected_key]}
       >
-        <SubMenu key='sub-live' title={<span><Icon type="video-camera" /> 直播</span>}>
-          <Menu.Item key='live'>
-            <a href='/youth/live' onClick={(evt)-> evt.stopPropagation()}>
-              <Icon type='bars' /><span className='nav-text'>直播间列表</span>
-            </a>
-          </Menu.Item>
-          <Menu.Item key='new-live-room'>
-            <a href='/youth/live/new' onClick={(evt)-> evt.stopPropagation()}>
-              <Icon type='plus' /><span className='nav-text'>创建直播间</span>
-            </a>
-          </Menu.Item>
-          <Menu.Item key='live-room'>
-            <a href='/youth/live/room' onClick={(evt)-> evt.stopPropagation()}>
-              <Icon type='video-camera' /><span className='nav-text'>直播间预览</span>
-            </a>
-          </Menu.Item>
-        </SubMenu>
+        {
+          for sub in menudata
+            <SubMenu key={sub.subkey} title={<span><Icon type={sub.subicon} /> {sub.subname}</span>}>
+            {
+              for menu in sub.menus
+                <Menu.Item key={menu.href}>
+                  <Link href={menu.href} icon={menu.icon}>{menu.name}</Link>
+                </Menu.Item>
+            }
+            </SubMenu>
+        }
       </Menu>
 
       {aside_action}
     </aside>
+
+
+Link = React.createClass
+  render: ->
+    {href, icon} = @props
+
+    <a href={href} onClick={(evt)-> evt.stopPropagation()}>
+      <span className='nav-text'>{@props.children}</span>
+    </a>
+
+menudata = [
+  {
+    subkey: 'sub-live'
+    subicon: 'video-camera'
+    subname: '直播'
+    menus: [
+      {href: '/youth/live',         icon: 'bars',          name: '直播间列表'}
+      {href: '/youth/live/new',     icon: 'plus',          name: '创建直播间'}
+      {href: '/youth/live/room',    icon: 'video-camera',  name: '直播间预览'}
+      {href: '/youth/live/records', icon: 'video-camera',  name: '录像回放'}
+    ]
+  }
+  {
+    subkey: 'sub-consultant'
+    subicon: 'solution'
+    subname: '顾问'
+    menus: [
+      {href: '/youth/consultant/learners',      icon: 'team', name: '学员列表'}
+      {href: '/youth/consultant/learners/edit', icon: 'edit', name: '新增/编辑学员'}
+    ]
+  }
+  {
+    subkey: 'sub-manager'
+    subicon: 'solution'
+    subname: '管理师'
+    menus: [
+      {href: '/youth/manager/learners',      icon: 'team', name: '学员列表'}
+      {href: '/youth/manager/learners/edit', icon: 'edit', name: '编辑学员'}
+    ]
+  }
+  {
+    subkey: 'sub-learner'
+    subicon: 'solution'
+    subname: '学员'
+    menus: [
+      {href: '/youth/learner/courses', icon: 'book',          name: '我的课程'}
+      {href: '/youth/learner/info',    icon: 'info-circle-o', name: '账号信息'}
+    ]
+  }
+  {
+    subkey: 'sub-teacher'
+    subicon: 'solution'
+    subname: '教师'
+    menus: [
+      {href: '/youth/teacher/schedule', icon: 'calendar', name: '课程安排'}
+    ]
+  }
+]

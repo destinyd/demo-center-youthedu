@@ -68,12 +68,20 @@ module.exports = YouthLiveRoomPreview = React.createClass
           <label style={label_style}>直播地址：</label>
           <span>http://......</span>
         </div>
+        <div>
+          <label style={label_style}>直播ID：</label>
+          <span>A20160810000013i</span>
+        </div>
       </div>
 
-      <div className='preview' style={preview_style}>
-        <Icon type='play-circle' style={color: '#2DB7F5', fontSize: 60, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, margin: 'auto', width: 100, height: 100, lineHeight: '100px'} />
-      </div>
+      <div id='player' style={preview_style}/>
     </div>
+
+  componentDidMount: ->
+    player = new CloudLivePlayer()
+    player.init {
+      activityId: 'A20160810000013i'
+    }, 'player'
 
 
 # <div id="player" style="width:100%;height:450px;">
