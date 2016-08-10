@@ -6,22 +6,25 @@ module.exports = YouthLiveIndexPage = React.createClass
       {
         key: '1'
         name: '直播活动一'
-        start: '2016-08-09 12:40'
-        end: '2016-08-09 14:40'
+        start: new Date('2016-08-09 12:40')
+        end: new Date('2016-08-09 14:40')
+        active: true
         signal: true
       }
       {
         key: '2'
         name: '直播活动二'
-        start: '2016-08-09 12:40'
-        end: '2016-08-09 14:40'
+        start: new Date('2016-07-09 12:40')
+        end: new Date('2016-07-09 14:40')
+        active: false
         signal: false
       }
       {
         key: '3'
         name: '直播活动三'
-        start: '2016-08-09 12:40'
-        end: '2016-08-09 14:40'
+        start: new Date('2016-07-09 12:40')
+        end: new Date('2016-07-09 14:40')
+        active: false
         signal: false
       }
     ]
@@ -33,14 +36,24 @@ module.exports = YouthLiveIndexPage = React.createClass
         key: 'name'
       }
       {
-        title: '开始时间'
-        dataIndex: 'start'
-        key: 'start'
+        title: '起止时间'
+        key: 'start_end'
+        render: (item)->
+          start = item.start.format('yyyy-MM-dd hh:mm')
+          end = item.end.format('yyyy-MM-dd hh:mm')
+
+          <span>
+            <span>{start}</span> -- <span>{end}</span>
+          </span>
       }
       {
-        title: '结束时间'
-        dataIndex: 'end'
-        key: 'end'
+        title: '直播状态'
+        dataIndex: 'active'
+        key: 'active'
+        render: (value)->
+          if value 
+          then <span>正在直播</span> 
+          else <span style={color: '#ccc'}>已结束</span>
       }
       {
         title: '信号状态'
@@ -50,6 +63,17 @@ module.exports = YouthLiveIndexPage = React.createClass
           if value 
           then <span>有信号</span> 
           else <span style={color: '#ccc'}>无信号</span>
+      }
+      {
+        title: '操作'
+        key: 'ops'
+        render: (item)->
+          if item.active
+            <div>
+              <a href='/youth/live/room'>预览</a>
+            </div>
+          else
+            <div />
       }
     ]
 
