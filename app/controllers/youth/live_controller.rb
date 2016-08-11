@@ -54,4 +54,5 @@ class Youth::LiveController < ApplicationController
   def nothing
     @component_name = 'Nothing'
   end
+
 end

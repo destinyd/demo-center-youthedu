@@ -21,4 +21,10 @@ Rails.application.routes.draw do
 
     get '/teacher/courses',             to: 'live#teacher_courses'
   end
+  
+  resources :live_items do
+    #方便调试用Get，实际开发改成Post
+    get "create_live", on: :collection
+    get "video_info_list", on: :collection
+  end
 end
