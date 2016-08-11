@@ -158,12 +158,13 @@ class LetvLiveRoom
       hash[num.to_s]
     end
 
-    def active_status
+    def active_status(activity_id)
       params = {
         :method => 'lecloud.cloudlive.vrs.activity.vrsinfo.search',
         :ver => '3.1',
         :userid => @@userid,
         :timestamp => Time.now.to_i * 1000,
+        :activityId => activity_id.to_s
       }
       params[:sign] = make_sign_str(params)
       str = params.map{|k, v| "&" + k.to_s + "=" + v.to_s}.join()
