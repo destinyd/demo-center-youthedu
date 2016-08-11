@@ -2,13 +2,13 @@ class Youth::LiveController < ApplicationController
   layout 'youth'
 
   def index
-    items = LiveItem.all.map { |item|
+    items = LiveItem.all.desc(:id).map { |item|
       {
         key: item.id.to_s,
         name: item.title,
         start: item.start_time,
         end: item.end_time,
-        active: item.active?,
+        active_status: item.active_status,
         signal: item.has_singal?
       }
     }

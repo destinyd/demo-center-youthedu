@@ -50,12 +50,18 @@ module.exports = YouthLiveIndexPage = React.createClass
       }
       {
         title: '直播状态'
-        dataIndex: 'active'
-        key: 'active'
-        render: (value)->
-          if value 
-          then <span>正在直播</span> 
-          else <span style={color: '#ccc'}>已结束</span>
+        dataIndex: 'active_status'
+        key: 'active_status'
+        render: (status)->
+          switch status
+            when 0 
+              <span style={color: '#ccc'}>未开始</span>
+            when 1
+              <span>正在直播</span> 
+            when 2
+              <span style={color: '#ccc'}>已中断</span>
+            when 3
+              <span style={color: '#ccc'}>已结束</span>
       }
       {
         title: '信号状态'
@@ -70,18 +76,23 @@ module.exports = YouthLiveIndexPage = React.createClass
         title: '操作'
         key: 'ops'
         render: (item)=>
-          if item.active
-            <div>
-              <a href="/youth/live/room/#{item.key}">预览</a>
-              <span className='ant-divider' />
-              <Popconfirm title="确定要提前结束直播吗？" onConfirm={@finish(item)}>
-                <a href='javascript:;'>提前结束</a>
-              </Popconfirm>
-            </div>
-          else
-            <div>
-              <a href='/youth/live/records'>录像回放</a>
-            </div>
+          switch item.active_status
+            when 0 
+              <div />
+            when 1
+              <div>
+                <a href="/youth/live/room/#{item.key}">预览</a>
+                <span className='ant-divider' />
+                <Popconfirm title="确定要提前结束直播吗？" onConfirm={@finish(item)}>
+                  <a href='javascript:;'>提前结束</a>
+                </Popconfirm>
+              </div>
+            when 2
+              <div />
+            when 3
+              <div>
+                <a href='/youth/live/records'>录像回放</a>
+              </div>
       }
     ]
 
