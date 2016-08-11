@@ -52,7 +52,7 @@ class LetvLiveRoom
     end
 
     def make_sign_str(hash)
-      Digest::MD5.hexdigest(hash.sort_by{|k,v| k}.map{|k,v| k.to_s + v.to_s}.join() + @@secretkey)
+      Digest::MD5.hexdigest(hash.sort_by{|k, v| k}.map{|k, v| k.to_s + v.to_s}.join() + @@secretkey)
     end
 
     # 方法二(获取推流url和推流码)
@@ -65,7 +65,7 @@ class LetvLiveRoom
         :activityId => activity_id,
       }
       push_url_params[:sign] = make_sign_str(push_url_params)
-      str = push_url_params.map{|k,v| "&" + k.to_s + "=" + v.to_s}.join()
+      str = push_url_params.map{|k, v| "&" + k.to_s + "=" + v.to_s}.join()
       str[0] = ""
       uri = URI("http://api.open.letvcloud.com/live/execute" + "?" + str)
       pushUrl = JSON.parse(Net::HTTP.get(uri))
@@ -85,7 +85,7 @@ class LetvLiveRoom
         :activityId => activity_id
       }
       params[:sign] = make_sign_str(params)
-      str = params.map{|k,v| "&" + k.to_s + "=" + v.to_s}.join()
+      str = params.map{|k, v| "&" + k.to_s + "=" + v.to_s}.join()
       str[0] = ""
       uri = URI("http://api.open.letvcloud.com/live/execute" + "?" + str)
       result_hash = {}
@@ -104,7 +104,7 @@ class LetvLiveRoom
         :activityId => activity_id
       }
       params[:sign] = make_sign_str(params)
-      str = params.map{|k,v| "&" + k.to_s + "=" + v.to_s}.join()
+      str = params.map{|k, v| "&" + k.to_s + "=" + v.to_s}.join()
       str[0] = ""
       uri = URI("http://api.open.letvcloud.com/live/execute" + "?" + str)
       JSON.parse(Net::HTTP.get(uri))["playPageUrl"]
@@ -120,14 +120,15 @@ class LetvLiveRoom
         :liveId => live_id
       }
       params[:sign] = make_sign_str(params)
-      str = params.map{|k,v| "&" + k.to_s + "=" + v.to_s}.join()
+      str = params.map{|k, v| "&" + k.to_s + "=" + v.to_s}.join()
       str[0] = ""
       uri = URI("http://api.open.letvcloud.com/live/execute" + "?" + str)
       return_hash = {}
       if !JSON.parse(Net::HTTP.get(uri))["rows"][0].nil?
         vu = JSON.parse(Net::HTTP.get(uri))["rows"][0]["videoUnique"]
-        return_hash[:web_url] = "http://yuntv.letv.com/bcloud.html?uu=#{@@uu}&vu=#{vu}&pu=12345abcde&auto_play=1&width=800&height=450"
+        return_hash[:review_url] = "http://yuntv.letv.com/bcloud.html?uu=#{@@uu}&vu=#{vu}&pu=12345abcde&auto_play=1&width=800&height=450"
         return_hash[:save_state] = convert_saved_video_state_code(JSON.parse(Net::HTTP.get(uri))["rows"][0]["status"])
+        return_hash[:video_id] = JSON.parse(Net::HTTP.get(uri))["rows"][0]["videoId"]
       else
         return_hash[:save_state] = "直播未结束或重未开启"
       end
@@ -160,9 +161,9 @@ class LetvLiveRoom
 end
 
 # 初始化设置类变量
-LetvLiveRoom.set_userid("823474")
-LetvLiveRoom.set_secretkey("f9e35f28944743e38ceccf9ab00364ab")
-LetvLiveRoom.set_uu("xrtjxlf2et")
+LetvLiveRoom.set_userid("857550")
+LetvLiveRoom.set_secretkey("ed854df4e84e891fc838cb09be9a5039")
+LetvLiveRoom.set_uu("zumwnd31gk")
 
 
 

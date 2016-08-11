@@ -21,7 +21,8 @@ class LiveItemsController < ApplicationController
       :obs_code => live.get_obs_url_and_code[:obs_code],
       :signal   => live.has_singal?,
       :play_url => live.get_play_url,
-      :live_id  => live.live_id
+      :live_id  => live.live_id,
+      :video_id => live.get_saved_video["video_id"]
     }
     puts datas
   end
@@ -35,5 +36,18 @@ class LiveItemsController < ApplicationController
     else
       puts "创建失败"
     end
+  end
+
+  def video_info_list
+    datas = LiveItem.all.to_a.map do |live_item|
+      video_info = live_item.get_video_info
+      if video_info != false
+        video_info
+      else
+        next
+      end
+    end
+    datas.delete({})
+    puts datas
   end
 end

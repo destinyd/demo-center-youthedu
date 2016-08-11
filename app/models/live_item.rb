@@ -1,4 +1,5 @@
-require './lib/letv_live_room' 
+require './lib/letv_live_room'
+require './lib/letv_video' 
 
 class LiveItem
   include Mongoid::Document
@@ -7,6 +8,7 @@ class LiveItem
   field :activity_id, :type => String
   field :live_id,     :type => String
   field :title,       :type => String
+  field :video_id,    :type => String
   field :start_time,  :type => Time
   field :end_time,    :type => Time
    
@@ -48,7 +50,10 @@ class LiveItem
     if self.live_id.nil?
       has_singal?(self.activity_id)
     end
-    LetvLiveRoom.get_saved_video(self.live_id)
+    saved_video_info = LetvLiveRoom.get_saved_video(self.live_id)
+    self.video_id = saved_video_info[:video_id]
+    self.save
+    saved_video_info
   end
 
   def finish!
@@ -61,6 +66,18 @@ class LiveItem
       now <= self.end_time ? "正在直播" : "已结束" 
     else
       "待开始"
+    end
+  end
+
+  def get_video_info
+    if self.video_id.nil?
+      self.get_saved_video
+    end
+    video_info = LetvVideo.get_video_info(self.video_id)
+    if video_info != false
+      video_info
+    else
+      false
     end
   end
 end
