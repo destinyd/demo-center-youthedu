@@ -157,6 +157,20 @@ class LetvLiveRoom
       hash = {"3" => "录制完成正在转码", "6" => "录制失败", "7" => "转码完成", "8" => "转码失败"}
       hash[num.to_s]
     end
+
+    def active_status
+      params = {
+        :method => 'lecloud.cloudlive.vrs.activity.vrsinfo.search',
+        :ver => '3.1',
+        :userid => @@userid,
+        :timestamp => Time.now.to_i * 1000,
+      }
+      params[:sign] = make_sign_str(params)
+      str = params.map{|k, v| "&" + k.to_s + "=" + v.to_s}.join()
+      str[0] = ""
+      uri = URI("http://api.open.letvcloud.com/live/execute" + "?" + str)
+      JSON.parse(Net::HTTP.get(uri))["rows"][0]["activityStatus"]
+    end
   end
 end
 
