@@ -96,15 +96,15 @@ module.exports = YouthLiveIndexPage = React.createClass
       }
     ]
 
-    <Table 
-      columns={columns} 
-      dataSource={dataSource} 
-      title={@render_title}
-    />
-
-  render_title: ->
     <div>
-      <Button type='primary' icon='plus' onClick={@open_new}>创建直播间</Button>
+      <div style={marginBottom: '1rem'}>
+        <Button type='primary' icon='plus' onClick={@open_new}>创建直播间</Button>
+      </div>
+
+      <Table 
+        columns={columns} 
+        dataSource={dataSource} 
+      />
     </div>
 
   open_new: ->
