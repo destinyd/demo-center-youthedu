@@ -22,9 +22,8 @@ class LiveItem
           :end_time    => hash[:end],
           :title       => hash[:title]
         )
-        true
       else
-        false
+        nil
       end
     end
   end
@@ -58,9 +57,12 @@ class LiveItem
 
   def finish!
     LetvLiveRoom.finish!(self.activity_id)
+    self.is_active = false
+    self.save
   end
 
   def active?
+    # 改成从 API 获取
     now = Time.now
     if now >= self.start_time
       now <= self.end_time ? "正在直播" : "已结束" 

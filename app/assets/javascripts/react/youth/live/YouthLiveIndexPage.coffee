@@ -2,32 +2,34 @@
 
 module.exports = YouthLiveIndexPage = React.createClass
   render: ->
-    dataSource = [
-      {
-        key: '1'
-        name: '演示直播间一'
-        start: new Date('2016-08-09 12:40')
-        end: new Date('2016-08-09 14:40')
-        active: true
-        signal: true
-      }
-      {
-        key: '2'
-        name: '演示直播间二'
-        start: new Date('2016-07-09 12:40')
-        end: new Date('2016-07-09 14:40')
-        active: false
-        signal: false
-      }
-      {
-        key: '3'
-        name: '演示直播间三'
-        start: new Date('2016-07-09 12:40')
-        end: new Date('2016-07-09 14:40')
-        active: false
-        signal: false
-      }
-    ]
+    dataSource = @props.rooms
+
+    # dataSource = [
+    #   {
+    #     key: '1'
+    #     name: '演示直播间一'
+    #     start: new Date('2016-08-09 12:40')
+    #     end: new Date('2016-08-09 14:40')
+    #     active: true
+    #     signal: true
+    #   }
+    #   {
+    #     key: '2'
+    #     name: '演示直播间二'
+    #     start: new Date('2016-07-09 12:40')
+    #     end: new Date('2016-07-09 14:40')
+    #     active: false
+    #     signal: false
+    #   }
+    #   {
+    #     key: '3'
+    #     name: '演示直播间三'
+    #     start: new Date('2016-07-09 12:40')
+    #     end: new Date('2016-07-09 14:40')
+    #     active: false
+    #     signal: false
+    #   }
+    # ]
 
     columns = [
       {
@@ -39,8 +41,8 @@ module.exports = YouthLiveIndexPage = React.createClass
         title: '起止时间'
         key: 'start_end'
         render: (item)->
-          start = item.start.format('yyyy-MM-dd hh:mm')
-          end = item.end.format('yyyy-MM-dd hh:mm')
+          start = new Date(item.start).format('yyyy-MM-dd hh:mm')
+          end = new Date(item.end).format('yyyy-MM-dd hh:mm')
 
           <span>
             <span>{start}</span> -- <span>{end}</span>
@@ -67,12 +69,12 @@ module.exports = YouthLiveIndexPage = React.createClass
       {
         title: '操作'
         key: 'ops'
-        render: (item)->
+        render: (item)=>
           if item.active
             <div>
-              <a href='/youth/live/room'>预览</a>
+              <a href="/youth/live/room/#{item.key}">预览</a>
               <span className='ant-divider' />
-              <Popconfirm title="确定要提前结束直播吗？">
+              <Popconfirm title="确定要提前结束直播吗？" onConfirm={@finish(item)}>
                 <a href='javascript:;'>提前结束</a>
               </Popconfirm>
             </div>
@@ -96,3 +98,11 @@ module.exports = YouthLiveIndexPage = React.createClass
 
   open_new: ->
     Turbolinks.visit('/youth/live/new')
+
+  finish: (item)->
+    ->
+      jQuery.ajax
+        url: "/live_items/#{item.key}/finish"
+        type: 'DELETE'
+      .done (res)->
+        location.href = '/youth/live'

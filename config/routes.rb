@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   root to: 'index#index'
 
   namespace :youth do
-    get '/live',         to: 'live#index'
-    get '/live/room',    to: 'live#room'
-    get '/live/new',     to: 'live#new'
-    get '/live/records', to: 'live#records'
+    get '/live',            to: 'live#index'
+
+    get '/live/room',       to: 'live#room'
+    get '/live/room/:id',   to: 'live#room'
+    
+    get '/live/new',        to: 'live#new'
+    get '/live/records',    to: 'live#records'
 
 
     get '/consultant/learners',       to: 'live#consultant_learners'
@@ -23,8 +26,8 @@ Rails.application.routes.draw do
   end
   
   resources :live_items do
-    #方便调试用Get，实际开发改成Post
-    get "create_live", on: :collection
-    get "video_info_list", on: :collection
+    post    "create_live", on: :collection
+    get     "video_info_list", on: :collection
+    delete  "finish", on: :member
   end
 end

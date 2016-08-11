@@ -2,36 +2,7 @@
 
 module.exports = YouthLiveRoomPreview = React.createClass
   render: ->
-    # dataSource = [
-    #   {
-    #     key: '1'
-    #     field: '直播间名称'
-    #     value: '演示直播间一'
-    #   }
-    #   {
-    #     key: '2'
-    #     field: '推流地址'
-    #     value: 'http://xxxxxxxxxxxxxx'
-    #   }
-    #   {
-    #     key: '3'
-    #     field: '推流码'
-    #     value: 'xxxxxxxxxxxxxxxxxxxxx'
-    #   }
-    # ]
-
-    # columns = [
-    #   {
-    #     title: '名称'
-    #     dataIndex: 'field'
-    #     key: 'field'
-    #   }
-    #   {
-    #     title: '值'
-    #     dataIndex: 'value'
-    #     key: 'value'
-    #   }
-    # ]
+    console.log room = @props.room
 
     label_style =
       float: 'left'
@@ -50,27 +21,33 @@ module.exports = YouthLiveRoomPreview = React.createClass
       <div className='room-info' style={marginBottom: '3rem'}>
         <div>
           <label style={label_style}>直播间名称：</label>
-          <span>演示直播间一</span>
+          <span>{room.name}</span>
         </div>
         <div>
           <label style={label_style}>推流地址：</label>
-          <span>http://xxxxxxxxxxxxxx</span>
+          <span>{room.obs_url}</span>
         </div>
         <div>
           <label style={label_style}>推流码：</label>
-          <span>xxxxxxxxxxxxxxxxxxxxx</span>
+          <span>{room.obs_code}</span>
         </div>
         <div>
           <label style={label_style}>信号状态：</label>
-          <span>有信号</span>
+          {
+            if room.signal
+            then <span>有信号</span>
+            else <span style={color: '#ccc'}>无信号</span>
+          }
         </div>
         <div>
           <label style={label_style}>直播地址：</label>
-          <span>http://......</span>
+          <span>
+            <a href={room.play_url} target='_blank'>{room.play_url}</a>
+          </span>
         </div>
         <div>
           <label style={label_style}>直播ID：</label>
-          <span>A20160810000013i</span>
+          <span>{room.live_id}</span>
         </div>
       </div>
 
@@ -80,7 +57,7 @@ module.exports = YouthLiveRoomPreview = React.createClass
   componentDidMount: ->
     player = new CloudLivePlayer()
     player.init {
-      activityId: 'A20160810000013i'
+      activityId: @props.room.activity_id
     }, 'player'
 
 
