@@ -39,22 +39,26 @@ class LetvVideo
       params[:sign] = make_sign_str(params)
 
       url = URI.parse("http://api.letvcloud.com/open.php")
-      return_hash = {}
+      # return_hash = {}
+
+      response = {}
 
       Net::HTTP.start(url.host, url.port) do |http|
         req = Net::HTTP::Post.new(url.path)
         req.set_form_data(params)
         response = JSON.parse(http.request(req).body)
-        if response["code"] != 0
-          false
-        else
-          return_hash[:video_name] = response["data"]["video_name"]
-          return_hash[:img_url] = response["data"]["img"]
-          time = response["data"]["video_duration"].to_i
-          return_hash[:video_duration] = time_to_hours(time)
-        end
+        # if response["code"] != 0
+        #   false
+        # else
+        #   return_hash[:video_name] = response["data"]["video_name"]
+        #   return_hash[:img_url] = response["data"]["img"]
+        #   time = response["data"]["video_duration"].to_i
+        #   return_hash[:video_duration] = time_to_hours(time)
+        # end
       end
-      return_hash
+
+      response
+      # return_hash
     end
   end
 end

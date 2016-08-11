@@ -19,6 +19,10 @@ class Youth::LiveController < ApplicationController
     }
   end
 
+  def new
+    @component_name = 'YouthLiveNew'
+  end
+
   def room
     if params[:id].blank?
       live = LiveItem.last
@@ -46,12 +50,23 @@ class Youth::LiveController < ApplicationController
     }
   end
 
-  def new
-    @component_name = 'YouthLiveNew'
-  end
-
   def records
+    if params[:id].blank?
+      live = LiveItem.last
+    else
+      live = LiveItem.find(params[:id])
+    end
+
+    saved_video = live.get_saved_video
+    saved_video['rows'].each {|x|
+      x['video_info'] = LetvVideo.get_video_info(x['videoId'])
+    }
+
+    @menukey = '/youth/live/records'
     @component_name = 'YouthLiveRecords'
+    @component_data = {
+      saved_video: saved_video
+    }
   end
 
   # -------------

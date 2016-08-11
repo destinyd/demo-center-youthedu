@@ -14,5 +14,7 @@ module DemoCenter
 
     ### 以下是自己添加的
     config.browserify_rails.commandline_options = "-t coffee-reactify --extension='.coffee'"
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

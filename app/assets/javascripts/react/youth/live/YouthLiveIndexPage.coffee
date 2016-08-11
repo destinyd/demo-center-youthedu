@@ -91,7 +91,7 @@ module.exports = YouthLiveIndexPage = React.createClass
               <div />
             when 3
               <div>
-                <a href='/youth/live/records'>录像回放</a>
+                <a href="/youth/live/records/#{item.key}">录像回放</a>
               </div>
       }
     ]

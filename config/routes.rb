@@ -3,12 +3,13 @@ Rails.application.routes.draw do
 
   namespace :youth do
     get '/live',            to: 'live#index'
+    get '/live/new',        to: 'live#new'
 
     get '/live/room',       to: 'live#room'
     get '/live/room/:id',   to: 'live#room'
     
-    get '/live/new',        to: 'live#new'
     get '/live/records',    to: 'live#records'
+    get '/live/records/:id',    to: 'live#records'
 
 
     get '/consultant/learners',       to: 'live#consultant_learners'

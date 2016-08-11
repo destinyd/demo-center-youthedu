@@ -124,15 +124,21 @@ class LetvLiveRoom
       str[0] = ""
       uri = URI("http://api.open.letvcloud.com/live/execute" + "?" + str)
       return_hash = {}
-      if !JSON.parse(Net::HTTP.get(uri))["rows"][0].nil?
-        vu = JSON.parse(Net::HTTP.get(uri))["rows"][0]["videoUnique"]
-        return_hash[:review_url] = "http://yuntv.letv.com/bcloud.html?uu=#{@@uu}&vu=#{vu}&pu=12345abcde&auto_play=1&width=800&height=450"
-        return_hash[:save_state] = convert_saved_video_state_code(JSON.parse(Net::HTTP.get(uri))["rows"][0]["status"])
-        return_hash[:video_id] = JSON.parse(Net::HTTP.get(uri))["rows"][0]["videoId"]
-      else
-        return_hash[:save_state] = "直播未结束或重未开启"
-      end
-      return_hash
+
+      res = JSON.parse(Net::HTTP.get(uri))
+      res.merge({
+        uu: @@uu
+      })
+
+      # if !["rows"][0].nil?
+      #   vu = JSON.parse(Net::HTTP.get(uri))["rows"][0]["videoUnique"]
+      #   return_hash[:review_url] = "http://yuntv.letv.com/bcloud.html?uu=#{@@uu}&vu=#{vu}&pu=12345abcde&auto_play=1&width=800&height=450"
+      #   return_hash[:save_state] = convert_saved_video_state_code(JSON.parse(Net::HTTP.get(uri))["rows"][0]["status"])
+      #   return_hash[:video_id] = JSON.parse(Net::HTTP.get(uri))["rows"][0]["videoId"]
+      # else
+      #   return_hash[:save_state] = "直播未结束或重未开启"
+      # end
+      # return_hash
     end
 
     # 方法六(结束直播活动)
