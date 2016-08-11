@@ -60,7 +60,7 @@ class LiveItem
   end
 
   def active_status
-    LetvLiveRoom.active_status
+    LetvLiveRoom.active_status(self.activity_id)
   end
 
   def get_video_info
