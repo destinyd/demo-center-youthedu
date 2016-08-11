@@ -4,7 +4,7 @@
 module.exports = ConsultantLearners = React.createClass
   render: ->
     <div>
-      <LearnersTable render_title={@render_table_title}/>
+      <LearnersTable render_title={@render_table_title} use_role='consultant'/>
     </div>
 
   render_table_title: ->

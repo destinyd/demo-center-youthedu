@@ -72,6 +72,7 @@ gem 'haml'
 # https://github.com/mindpin/knowledge-camp/issues/170
 gem 'browserify-rails'
 
+gem 'font-awesome-sass'
 
 gem "unicorn"
 gem "mina", "0.3.7"

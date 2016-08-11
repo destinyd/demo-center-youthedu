@@ -1,5 +1,7 @@
 # utils
 window.ClassName = require 'utils/ClassName'
+# http://fontawesome.io/icons/
+window.FaIcon = require 'utils/FaIcon'
 
 format_date = require 'utils/format_date'
 Date.prototype.format = (str)->
@@ -48,17 +50,18 @@ window.YouthCommon = {
   LearnersTable: require 'react/youth/common/LearnersTable'
 }
 
-window.YouthLiveIndexPage = require 'react/youth/live/YouthLiveIndexPage'
-window.YouthLiveNew = require 'react/youth/live/YouthLiveNew'
-window.YouthLiveRoomPreview = require 'react/youth/live/YouthLiveRoomPreview'
-window.YouthLiveRecords = require 'react/youth/live/YouthLiveRecords'
+window.YouthLiveIndexPage     = require 'react/youth/live/YouthLiveIndexPage'
+window.YouthLiveNew           = require 'react/youth/live/YouthLiveNew'
+window.YouthLiveRoomPreview   = require 'react/youth/live/YouthLiveRoomPreview'
+window.YouthLiveRecords       = require 'react/youth/live/YouthLiveRecords'
 
-window.ConsultantLearners = require 'react/youth/consultant/ConsultantLearners'
-window.ConsultantEditLearner = require 'react/youth/consultant/ConsultantEditLearner'
+window.ConsultantLearners     = require 'react/youth/consultant/ConsultantLearners'
+window.ConsultantEditLearner  = require 'react/youth/consultant/ConsultantEditLearner'
 
+window.ManagerLearners = require 'react/youth/manager/ManagerLearners'
 window.ManagerSchedule = require 'react/youth/learner/LearnerCourses'
 
 window.LearnerCourses = require 'react/youth/learner/LearnerCourses'
-window.LearnerInfo = require 'react/youth/learner/LearnerInfo'
+window.LearnerInfo    = require 'react/youth/learner/LearnerInfo'
 
 window.TeacherCourses = require 'react/youth/learner/LearnerCourses'

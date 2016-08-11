@@ -28,7 +28,7 @@ class Youth::LiveController < ApplicationController
   end
 
   def manager_learners
-    @component_name = 'ConsultantLearners'
+    @component_name = 'ManagerLearners'
   end
 
   def manager_edit_learner
