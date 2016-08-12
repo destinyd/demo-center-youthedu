@@ -3,7 +3,7 @@
 
 module.exports = LearnerCourses = React.createClass
   getInitialState: ->
-    show_calendar: false
+    show_calendar: true
 
   render: ->
     <div>
@@ -17,7 +17,7 @@ module.exports = LearnerCourses = React.createClass
 
       {
         if @state.show_calendar
-          <Calendar />
+          <DataCalendar />
         else
           <DataTable />
       }
@@ -105,3 +105,11 @@ DataTable = React.createClass
       columns={columns} 
       dataSource={dataSource} 
     />
+
+
+DataCalendar = React.createClass
+  render: ->
+    <Calendar dateCellRender={@dateCellRender} />
+
+  dateCellRender: ->
+    <a href='/youth/live'>链接文字</a>
