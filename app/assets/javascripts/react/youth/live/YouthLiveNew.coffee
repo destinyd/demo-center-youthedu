@@ -1,5 +1,6 @@
 { Form, Input, Col, DatePicker, TimePicker, Button, Icon } = antd
 { RangePicker } = DatePicker
+{ PageTitle } = Layout
 
 FormItem = Form.Item
 
@@ -35,7 +36,7 @@ YouthLiveNew = React.createClass
     default_time = [new Date, null]
 
     <div>
-      <h2 style={marginBottom: '3rem'}>创建直播间</h2>
+      <PageTitle>创建直播间</PageTitle>
 
       <div style={maxWidth: 600}>
         <Form onSubmit={@handle_submit}>

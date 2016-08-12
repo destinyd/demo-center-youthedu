@@ -83,9 +83,15 @@ Link = React.createClass
   render: ->
     {href, icon} = @props
 
-    <a href={href} onClick={(evt)-> evt.stopPropagation()}>
+    <a href='javascript:;' onClick={@click}>
       <span className='nav-text'>{@props.children}</span>
     </a>
+
+  click: (evt)->
+    evt.stopPropagation()
+    Turbolinks.visit @props.href
+
+
 
 menudata = [
   {

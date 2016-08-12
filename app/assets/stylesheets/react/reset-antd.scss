@@ -12,6 +12,8 @@ body {
 .ant-btn {
   font-size: 14px;
   border-radius: 100px;
+  padding: 4px 1rem;
+  line-height: 22px;
 
   &.ant-btn-sm {
     font-size: 12px;
@@ -21,6 +23,10 @@ body {
 
 .ant-table {
   font-size: 14px;
+
+  td, th {
+    padding: 1rem;
+  }
 
   .ant-divider {
     margin: 0 10px;

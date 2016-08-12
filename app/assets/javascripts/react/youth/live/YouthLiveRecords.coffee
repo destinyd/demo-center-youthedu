@@ -1,4 +1,5 @@
 { Table, Button, Popconfirm, Icon } = antd
+{ PageTitle } = Layout
 
 module.exports = YouthLiveIndexRecords = React.createClass
   render: ->
@@ -77,7 +78,11 @@ module.exports = YouthLiveIndexRecords = React.createClass
       }
     ]
 
-    <Table 
-      columns={columns} 
-      dataSource={dataSource} 
-    />
+    <div>
+      <PageTitle>录像回放</PageTitle>
+      <Table 
+        columns={columns} 
+        dataSource={dataSource} 
+        bordered
+      />
+    </div>

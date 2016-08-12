@@ -3,9 +3,9 @@
 { LearnerForm } = YouthCommon
 
 
-module.exports = ConsultantEditLearner = React.createClass
+module.exports = ManagerEditLearner = React.createClass
   cancel: ->
-    Turbolinks.visit '/youth/consultant/learners'
+    Turbolinks.visit '/youth/manager/learners'
 
   render: ->
     <div>

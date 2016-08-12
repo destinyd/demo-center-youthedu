@@ -1,4 +1,5 @@
 { Table, Icon } = antd
+{ PageTitle } = Layout
 
 module.exports = YouthLiveRoomPreview = React.createClass
   render: ->
@@ -15,23 +16,26 @@ module.exports = YouthLiveRoomPreview = React.createClass
       backgroundColor: '#333'
       position: 'relative'
 
-    <div>
-      <h2 style={marginBottom: '3rem'}>直播间预览</h2>
+    info_item_style =
+      marginBottom: '0.5rem'
 
-      <div className='room-info' style={marginBottom: '3rem'}>
-        <div>
+    <div>
+      <PageTitle>直播间预览</PageTitle>
+
+      <div className='room-info' style={marginBottom: '1.5rem'}>
+        <div style={info_item_style}>
           <label style={label_style}>直播间名称：</label>
           <span>{room.name}</span>
         </div>
-        <div>
+        <div style={info_item_style}>
           <label style={label_style}>推流地址：</label>
           <span>{room.obs_url}</span>
         </div>
-        <div>
+        <div style={info_item_style}>
           <label style={label_style}>推流码：</label>
           <span>{room.obs_code}</span>
         </div>
-        <div>
+        <div style={info_item_style}>
           <label style={label_style}>信号状态：</label>
           {
             if room.signal
@@ -39,13 +43,13 @@ module.exports = YouthLiveRoomPreview = React.createClass
             else <span style={color: '#ccc'}>无信号</span>
           }
         </div>
-        <div>
+        <div style={info_item_style}>
           <label style={label_style}>直播地址：</label>
           <span>
             <a href={room.play_url} target='_blank'>{room.play_url}</a>
           </span>
         </div>
-        <div>
+        <div style={info_item_style}>
           <label style={label_style}>直播ID：</label>
           <span>{room.live_id}</span>
         </div>

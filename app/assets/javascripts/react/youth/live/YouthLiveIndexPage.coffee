@@ -1,4 +1,4 @@
-{ Table, Button, Popconfirm } = antd
+{ Table, Button, Popconfirm, Icon } = antd
 
 module.exports = YouthLiveIndexPage = React.createClass
   render: ->
@@ -91,19 +91,20 @@ module.exports = YouthLiveIndexPage = React.createClass
               <div />
             when 3
               <div>
-                <a href="/youth/live/records/#{item.key}">录像回放</a>
+                <a href="/youth/live/records/#{item.key}"><Icon type='play-circle-o' /> 录像回放</a>
               </div>
       }
     ]
 
     <div>
-      <div style={marginBottom: '1rem'}>
+      <div style={marginBottom: '1.5rem'}>
         <Button type='primary' icon='plus' onClick={@open_new}>创建直播间</Button>
       </div>
 
       <Table 
         columns={columns} 
         dataSource={dataSource} 
+        bordered
       />
     </div>
 

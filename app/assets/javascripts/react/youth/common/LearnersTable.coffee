@@ -48,7 +48,7 @@ module.exports = LearnersTable = React.createClass
         name: '孙一峰'
         gender: '男'
         consultant: '猫叔'
-        manager: '彼尔德'
+        manager: '三文鱼'
       }
     ]
 
@@ -143,8 +143,9 @@ module.exports = LearnersTable = React.createClass
         columns={columns} 
         dataSource={dataSource}
         title={@props.render_title}
+        bordered
         expandedRowRender={(record)->
-          <div>家长联系信息</div>
+          <div>家长信息：某某某，13812345678，abc@example.com</div>
         }
       />
       <AssignWorker ref='assign_worker' />

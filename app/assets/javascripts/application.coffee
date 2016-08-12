@@ -2,6 +2,7 @@
 window.ClassName = require 'utils/ClassName'
 # http://fontawesome.io/icons/
 window.FaIcon = require 'utils/FaIcon'
+window.Layout = require 'react/layouts/Layout'
 
 format_date = require 'utils/format_date'
 Date.prototype.format = (str)->
@@ -48,6 +49,7 @@ window.YouthLiveLayout = require 'react/layouts/YouthLiveLayout'
 # youth live
 window.YouthCommon = {
   LearnersTable: require 'react/youth/common/LearnersTable'
+  LearnerForm: require 'react/youth/common/LearnerForm'
 }
 
 window.YouthLiveIndexPage     = require 'react/youth/live/YouthLiveIndexPage'
@@ -59,6 +61,7 @@ window.ConsultantLearners     = require 'react/youth/consultant/ConsultantLearne
 window.ConsultantEditLearner  = require 'react/youth/consultant/ConsultantEditLearner'
 
 window.ManagerLearners = require 'react/youth/manager/ManagerLearners'
+window.ManagerEditLearner  = require 'react/youth/manager/ManagerEditLearner'
 window.ManagerSchedule = require 'react/youth/learner/LearnerCourses'
 
 window.LearnerCourses = require 'react/youth/learner/LearnerCourses'
