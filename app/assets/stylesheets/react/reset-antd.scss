@@ -66,3 +66,11 @@ body {
     }
   }
 }
+
+.ant-switch:after {
+  left: 1px;
+}
+
+.ant-switch-checked:after {
+  left: 23px;
+}

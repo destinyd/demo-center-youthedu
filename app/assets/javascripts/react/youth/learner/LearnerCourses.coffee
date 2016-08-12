@@ -1,6 +1,41 @@
-{ Table } = antd
+{ Table, Switch, Icon } = antd
+{ PageTitle } = Layout
 
 module.exports = LearnerCourses = React.createClass
+  render: ->
+    <div>
+      <div style={overflow: 'hidden'}>
+        <div style={float: 'left'}>
+          <PageTitle>课程安排</PageTitle>
+        </div>
+
+        <CalendarToggle />
+      </div>
+
+      <DataTable />
+    </div>
+
+CalendarToggle = React.createClass
+  render: ->
+    style = 
+      float: 'left'
+      marginLeft: '2rem'
+
+    style_span =
+      float: 'left'
+      lineHeight: '32px'
+      marginRight: '0.5rem'
+
+    <div style={style}>
+      <span style={style_span}>显示日历</span>
+      <Switch style={marginTop: '5px'} 
+        defaultChecked={true} 
+        onChange={@switch_change} 
+        checkedChildren={<Icon type='calendar' />}
+      />
+    </div>
+
+DataTable = React.createClass
   render: ->
     dataSource = [{}, {}, {}, {}, {}, {}, {}]
 
@@ -51,7 +86,7 @@ module.exports = LearnerCourses = React.createClass
           </div>
       }
     ]
-
+    
     <Table 
       columns={columns} 
       dataSource={dataSource} 
