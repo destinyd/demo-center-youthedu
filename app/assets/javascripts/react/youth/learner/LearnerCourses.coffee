@@ -1,7 +1,10 @@
-{ Table, Switch, Icon } = antd
+{ Table, Switch, Icon, Calendar } = antd
 { PageTitle } = Layout
 
 module.exports = LearnerCourses = React.createClass
+  getInitialState: ->
+    show_calendar: false
+
   render: ->
     <div>
       <div style={overflow: 'hidden'}>
@@ -9,11 +12,22 @@ module.exports = LearnerCourses = React.createClass
           <PageTitle>课程安排</PageTitle>
         </div>
 
-        <CalendarToggle />
+        <CalendarToggle show_calendar={@state.show_calendar} toggle={@toggle} />
       </div>
 
-      <DataTable />
+      {
+        if @state.show_calendar
+          <Calendar />
+        else
+          <DataTable />
+      }
+
     </div>
+
+  toggle: (checked)->
+    @setState show_calendar: checked
+
+
 
 CalendarToggle = React.createClass
   render: ->
@@ -29,8 +43,8 @@ CalendarToggle = React.createClass
     <div style={style}>
       <span style={style_span}>显示日历</span>
       <Switch style={marginTop: '5px'} 
-        defaultChecked={true} 
-        onChange={@switch_change} 
+        defaultChecked={@props.show_calendar} 
+        onChange={@props.toggle} 
         checkedChildren={<Icon type='calendar' />}
       />
     </div>

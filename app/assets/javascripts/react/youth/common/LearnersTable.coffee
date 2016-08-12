@@ -14,6 +14,7 @@ module.exports = LearnersTable = React.createClass
         gender: '女'
         consultant: '罗小黑'
         manager: '布朗熊'
+        status: '0'
       }
       {
         key: '2'
@@ -21,6 +22,7 @@ module.exports = LearnersTable = React.createClass
         gender: '男'
         consultant: '兔斯基'
         manager: null
+        status: '0'
       }
       {
         key: '3'
@@ -28,6 +30,7 @@ module.exports = LearnersTable = React.createClass
         gender: '女'
         consultant: '罗小黑'
         manager: '彼尔德'
+        status: '1'
       }
       {
         key: '4'
@@ -35,6 +38,7 @@ module.exports = LearnersTable = React.createClass
         gender: '男'
         consultant: null
         manager: '布朗熊'
+        status: '0'
       }
       {
         key: '5'
@@ -42,6 +46,7 @@ module.exports = LearnersTable = React.createClass
         gender: '男'
         consultant: '猫叔'
         manager: '彼尔德'
+        status: '1'
       }
       {
         key: '6'
@@ -49,6 +54,7 @@ module.exports = LearnersTable = React.createClass
         gender: '男'
         consultant: '猫叔'
         manager: '三文鱼'
+        status: '0'
       }
     ]
 
@@ -123,15 +129,29 @@ module.exports = LearnersTable = React.createClass
             </div>
         }
         {
+          title: '状态'
+          key: 'status'
+          render: (x)->
+            switch x.status
+              when '0'
+                <div>
+                  <span>未评估</span>
+                  <span className='ant-divider' />
+                  <a href='/youth/manager/initial_assessment'><Icon type='bar-chart' /> 初始评估</a>
+                </div>
+              when '1'
+                <div>
+                  <span>未排课</span>
+                  <span className='ant-divider' />
+                  <a href='/youth/manager/schedule'><Icon type='calendar' /> 排课</a> 
+                </div>
+        }
+        {
           title: '操作'
           key: 'ops-manager'
           render: =>
             <div>
               <a href='/youth/consultant/learners/edit'><Icon type='edit' /> 编辑</a>
-              <span className='ant-divider' />
-              <a href='/youth/manager/initial_assessment'><Icon type='bar-chart' /> 初始评估</a>
-              <span className='ant-divider' />
-              <a href='/youth/manager/schedule'><Icon type='calendar' /> 排课</a> 
             </div>
         }
       ]

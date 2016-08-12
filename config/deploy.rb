@@ -5,10 +5,10 @@ require 'rails/generators'
 require 'mina_util/builder'
 require 'yaml'
 
-set :domain, '101.201.76.76'
-set :deploy_to, '/web/demo-center'
+set :domain, 'youth.mindpin.com'
+set :deploy_to, '/web/youthedu'
 set :current_path, 'current'
-set :repository, 'https://github.com/mindpin/demo-center.git'
+set :repository, 'https://github.com/mindpin/demo-center-youthedu.git'
 set :branch, 'master'
 set :user, 'root'
 set :term_mode, nil
@@ -50,10 +50,10 @@ task :setup => :environment do
   secrets = MinaUtil::Builder.ask_secrets
   queue! %[echo '#{secrets}' > "#{deploy_to}/shared/config/secrets.yml"]
 
-  nginx = MinaUtil::Builder.ask_nginx('demo-center', '/web/demo-center')
-  queue! %[echo '#{nginx}' > "/etc/nginx/conf.d/demo-center.conf"]
+  nginx = MinaUtil::Builder.ask_nginx('youthedu', '/web/youthedu')
+  queue! %[echo '#{nginx}' > "/etc/nginx/conf.d/youthedu.conf"]
   #test
-  #queue! %[echo '#{nginx}' > "/home/dd/demo-center.conf"]
+  #queue! %[echo '#{nginx}' > "/home/dd/youthedu.conf"]
 
   queue! %[touch "#{deploy_to}/shared/config/application.yml"]
   if File.exist? "config/application.yml.sample"
@@ -82,7 +82,7 @@ task :deploy => :environment do
         source /etc/profile
         bundle
         cnpm install
-        RAILS_ENV=production bundle exec rake assets:precompile
+        RAILS_ENV="production" bundle exec rake assets:precompile
         ./deploy/sh/unicorn.sh stop
         ./deploy/sh/unicorn.sh start
       ]
@@ -101,7 +101,7 @@ task :update_code => :environment do
         source /etc/profile
         bundle
         cnpm install
-        RAILS_ENV=production bundle exec rake assets:precompile
+        RAILS_ENV="production" bundle exec rake assets:precompile
       ]
     end
   end

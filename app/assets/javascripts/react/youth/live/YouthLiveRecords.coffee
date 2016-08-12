@@ -1,25 +1,16 @@
-{ Table, Button, Popconfirm, Icon } = antd
+{ Table, Button, Popconfirm, Icon, Alert } = antd
 { PageTitle } = Layout
 
 module.exports = YouthLiveIndexRecords = React.createClass
   render: ->
-    # dataSource = [
-    #   {
-    #     key: '1'
-    #     name: '视频一'
-    #     length: '12:22'
-    #   }
-    #   {
-    #     key: '2'
-    #     name: '视频二'
-    #     length: '12:22'
-    #   }
-    #   {
-    #     key: '3'
-    #     name: '视频三'
-    #     length: '12:22'
-    #   }
-    # ]
+    if not @props.saved_video?
+      return (
+        <div>
+          <PageTitle>录像回放</PageTitle>
+          <Alert message="还没有创建任何直播间" type="warning" />
+        </div>
+      )
+
 
     # 数据包装参考
     # http://help.lecloud.com/Wiki.jsp?page=PlayInterfaceDocument

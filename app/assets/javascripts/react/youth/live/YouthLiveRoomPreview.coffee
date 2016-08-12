@@ -1,4 +1,4 @@
-{ Table, Icon } = antd
+{ Table, Icon, Alert } = antd
 { PageTitle } = Layout
 
 module.exports = YouthLiveRoomPreview = React.createClass
@@ -18,6 +18,15 @@ module.exports = YouthLiveRoomPreview = React.createClass
 
     info_item_style =
       marginBottom: '0.5rem'
+
+    if not room?
+      return (
+        <div>
+          <PageTitle>直播间预览</PageTitle>
+          <Alert message="还没有创建任何直播间" type="warning" />
+        </div>
+      )
+
 
     <div>
       <PageTitle>直播间预览</PageTitle>
@@ -59,10 +68,11 @@ module.exports = YouthLiveRoomPreview = React.createClass
     </div>
 
   componentDidMount: ->
-    player = new CloudLivePlayer()
-    player.init {
-      activityId: @props.room.activity_id
-    }, 'player'
+    if @props.room?
+      player = new CloudLivePlayer()
+      player.init {
+        activityId: @props.room.activity_id
+      }, 'player'
 
 
 # <div id="player" style="width:100%;height:450px;">
