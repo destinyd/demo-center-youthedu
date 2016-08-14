@@ -1,3 +1,5 @@
 module.exports = FaIcon = React.createClass
   render: ->
-    <i className="fa fa-#{@props.type}" />
+    klass = ["fa fa-#{@props.type}", @props.className].join(' ')
+
+    <i className={klass} />

@@ -4,7 +4,7 @@ FormItem = Form.Item
 
 LearnerForm = React.createClass
   submit: ->
-    console.log(@props.form.getFieldsValue())
+    @props.submit @props.form.getFieldsValue()
 
   render: ->
     { getFieldProps } = @props.form

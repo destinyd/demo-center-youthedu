@@ -58,6 +58,9 @@ body {
 }
 
 .ant-modal {
+  .ant-modal-body {
+    font-size: 14px;
+  }
   .ant-modal-footer {
     overflow: hidden;
     .ant-btn {

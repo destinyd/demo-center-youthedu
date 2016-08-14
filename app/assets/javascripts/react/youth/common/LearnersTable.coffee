@@ -151,7 +151,7 @@ module.exports = LearnersTable = React.createClass
           key: 'ops-manager'
           render: =>
             <div>
-              <a href='/youth/consultant/learners/edit'><Icon type='edit' /> 编辑</a>
+              <a href='/youth/manager/learners/edit'><Icon type='edit' /> 编辑</a>
             </div>
         }
       ]
@@ -175,6 +175,7 @@ module.exports = LearnersTable = React.createClass
 AssignWorker = React.createClass
   getInitialState: ->
     open: false
+    selected_worker: null
 
   open: ->
     @setState open: true
@@ -182,11 +183,38 @@ AssignWorker = React.createClass
   close: ->
     @setState open: false
 
+  select: (worker)->
+    =>
+      @setState selected_worker: worker
+
   render: ->
+    workers = [
+      {id: 0, name: '彼尔德', learners_count: 10}
+      {id: 1, name: '轻松熊', learners_count: 15}
+      {id: 2, name: '三文鱼', learners_count: 22}
+    ]
+
     <Modal title='指派管理师'
       visible={@state.open}
-      onOK={@props.ok}
+      onOk={@close}
       onCancel={@close}
+      width={400}
+      className='assign-worker'
     >
-      <span>rua ha gua rua ha gua rua ha gua</span>
+      <div style={marginBottom: '1rem'}>请从下列管理师中选择：</div>
+      <div className='workers'>
+      {
+        for worker in workers
+          klass = ClassName
+            'worker': true
+            'selected': worker.id == @state.selected_worker?.id
+
+          <a key={worker.id} className={klass} onClick={@select(worker)}>
+            <Icon type='user' className='avatar' />
+            <span>{worker.name}</span>
+            <span className='learners-count'>目前管理 {worker.learners_count} 个学生</span>
+            <FaIcon type='check' className='check' />
+          </a>
+      }
+      </div>
     </Modal>
