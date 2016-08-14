@@ -2,7 +2,7 @@
 { PageTitle } = Layout
 { PlanTimeline } = YouthCommon
 
-module.exports = LearnerCourses = React.createClass
+module.exports = TeacherCourses = React.createClass
   getInitialState: ->
     show_calendar: false
 
@@ -20,7 +20,7 @@ module.exports = LearnerCourses = React.createClass
         if @state.show_calendar
           <DataCalendar />
         else
-          <PlanTimeline />
+          <PlanTimeline courses={courses} timeline_of='teacher' />
       }
 
     </div>
@@ -108,12 +108,12 @@ DataTable = React.createClass
     />
 
 courses = [
-  {start: '2016-08-16 19:00', period: '2', name: '示例课程一', type: '直播课', teacher: '王老师'}
-  {start: '2016-08-19 19:00', period: '2', name: '示例课程二', type: '线下小班课', teacher: '王老师'}
-  {start: '2016-08-21 19:00', period: '2', name: '示例课程三', type: '直播课', teacher: '王老师'}
-  {start: '2016-08-23 19:00', period: '2', name: '示例课程四', type: '线下小班课', teacher: '王老师'}
-  {start: '2016-08-26 19:00', period: '2', name: '示例课程五', type: '直播课', teacher: '王老师'}
-  {start: '2016-08-28 19:00', period: '2', name: '示例课程六', type: '线下小班课', teacher: '王老师'}
+  {start: '2016-08-16 19:00', period: '2', name: '示例课程一', type: '直播课', learners: '张继科'}
+  {start: '2016-08-19 19:00', period: '2', name: '示例课程二', type: '线下小班课', learners: '张继科, 孙一峰, 黄旭东'}
+  {start: '2016-08-21 19:00', period: '2', name: '示例课程三', type: '直播课', learners: '张继科'}
+  {start: '2016-08-23 19:00', period: '2', name: '示例课程四', type: '线下小班课', learners: '张继科, 孙一峰, 黄旭东'}
+  {start: '2016-08-26 19:00', period: '2', name: '示例课程五', type: '直播课', learners: '张继科'}
+  {start: '2016-08-28 19:00', period: '2', name: '示例课程六', type: '线下小班课', learners: '张继科, 孙一峰, 黄旭东, 傅园慧'}
 ]
 
 DataCalendar = React.createClass

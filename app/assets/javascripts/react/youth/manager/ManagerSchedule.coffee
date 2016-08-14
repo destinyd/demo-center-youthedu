@@ -1,8 +1,8 @@
-{ Table, Switch, Icon, Calendar } = antd
+{ Table, Switch, Icon, Calendar, Button } = antd
 { PageTitle } = Layout
 { PlanTimeline } = YouthCommon
 
-module.exports = LearnerCourses = React.createClass
+module.exports = ManagerSchedule = React.createClass
   getInitialState: ->
     show_calendar: false
 
@@ -14,6 +14,10 @@ module.exports = LearnerCourses = React.createClass
         </div>
 
         <CalendarToggle show_calendar={@state.show_calendar} toggle={@toggle} />
+      </div>
+
+      <div style={marginBottom: '1.5rem'}>
+        <Button type='primary'><Icon type='plus' /> 新增排课</Button>
       </div>
 
       {

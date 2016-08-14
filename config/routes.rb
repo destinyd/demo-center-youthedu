@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     get '/manager/learners',            to: 'live#manager_learners'
     get '/manager/learners/edit',       to: 'live#manager_edit_learner'
-    get '/manager/initial_assessment',  to: 'live#nothing'
+    get '/manager/initial_assessment',  to: 'live#manager_initial_assessment'
     get '/manager/schedule',            to: 'live#manager_schedule'
 
     get '/learner/courses',             to: 'live#learner_courses'

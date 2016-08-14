@@ -50,6 +50,7 @@ window.YouthLiveLayout = require 'react/layouts/YouthLiveLayout'
 window.YouthCommon = {
   LearnersTable: require 'react/youth/common/LearnersTable'
   LearnerForm: require 'react/youth/common/LearnerForm'
+  PlanTimeline: require 'react/youth/common/PlanTimeline'
 }
 
 window.YouthLiveIndexPage     = require 'react/youth/live/YouthLiveIndexPage'
@@ -62,9 +63,10 @@ window.ConsultantEditLearner  = require 'react/youth/consultant/ConsultantEditLe
 
 window.ManagerLearners = require 'react/youth/manager/ManagerLearners'
 window.ManagerEditLearner  = require 'react/youth/manager/ManagerEditLearner'
-window.ManagerSchedule = require 'react/youth/learner/LearnerCourses'
+window.ManagerSchedule = require 'react/youth/manager/ManagerSchedule'
+window.ManagerInitialAssessment = require 'react/youth/manager/ManagerInitialAssessment'
 
 window.LearnerCourses = require 'react/youth/learner/LearnerCourses'
 window.LearnerInfo    = require 'react/youth/learner/LearnerInfo'
 
-window.TeacherCourses = require 'react/youth/learner/LearnerCourses'
+window.TeacherCourses = require 'react/youth/teacher/TeacherCourses'

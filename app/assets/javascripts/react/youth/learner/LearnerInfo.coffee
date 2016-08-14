@@ -1,5 +1,6 @@
-{ Icon } = antd
+{ Icon, Timeline } = antd
 { PageTitle } = Layout
+{ PlanTimeline } = YouthCommon
 
 module.exports = LearnerInfo = React.createClass
   render: ->
@@ -48,6 +49,12 @@ module.exports = LearnerInfo = React.createClass
       </div>
 
       <PageTitle>近期课程安排</PageTitle>
+      {
+        <PlanTimeline pending={
+          <a href='/youth/learner/courses'>查看更多</a>
+        } />
+      }
+
     </div>
 
 MyInfo = React.createClass

@@ -91,6 +91,10 @@ class Youth::LiveController < ApplicationController
     @component_name = 'ManagerSchedule'
   end
 
+  def manager_initial_assessment
+    @component_name = 'ManagerInitialAssessment'
+  end
+
   def learner_courses
     @component_name = 'LearnerCourses'
   end
